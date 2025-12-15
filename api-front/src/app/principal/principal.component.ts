@@ -9,6 +9,10 @@ import { ClienteService } from '../servico/cliente.service';
 })
 export class PrincipalComponent {
 
+  // Objeto do tipo Cliente
+  cliente = new Cliente();
+
+
   // Variável para visibilidade dos botões
   btnCadastro:boolean = true;
 
