@@ -10,8 +10,8 @@
   <input type="button" value="Cancelar" *ngIf="!btnCadastro" class="btn btn-secondary">
 </form>
 
-<table class="table table-info">
-  <thead>
+<table class="table">
+  <thead class="table table-info">
     <tr>
       <th>#</th>
       <th>Nome</th>
@@ -20,5 +20,13 @@
       <th>Selecionar</th>
     </tr>
   </thead>
-  <tbody></tbody>
+  <tbody>
+     <tr *ngFor="let cliente of clientes; index as i"> <!-- let i = index -->
+      <td>{{i+1}}</td>
+      <td>{{cliente.nome}}</td>
+      <td>{{cliente.idade}}</td>
+      <td>{{cliente.cidade}}</td>
+      <td><button class="btn btn-success">Selecionar</button>
+    </tr>
+  </tbody>
 </table>

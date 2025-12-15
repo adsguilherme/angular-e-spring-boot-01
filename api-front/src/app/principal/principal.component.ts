@@ -23,4 +23,9 @@ export class PrincipalComponent {
     this.servico.selecionar()
       .subscribe(retorno => this.clientes = retorno);
   }
+
+  // Metodo/funcao de inicializacao
+  ngOnInit(){
+    this.selecionar();
+  }
 }
