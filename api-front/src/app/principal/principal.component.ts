@@ -12,7 +12,6 @@ export class PrincipalComponent {
   // Objeto do tipo Cliente
   cliente = new Cliente();
 
-
   // Variável para visibilidade dos botões
   btnCadastro:boolean = true;
 
@@ -26,6 +25,14 @@ export class PrincipalComponent {
   selecionar():void{
     this.servico.selecionar()
       .subscribe(retorno => this.clientes = retorno);
+  }
+
+  // Metodo/funcao de cadastro
+  cadastrar():void{
+    this.servico.cadastrar(this.cliente)
+      .subscribe(retorno => {
+        this.clientes.push(retorno);
+      });
   }
 
   // Metodo/funcao de inicializacao

@@ -20,7 +20,7 @@ export class ClienteService {
 
   // Método para cadastrar clientes
   cadastrar(cliente:Cliente):Observable<Cliente>{
-    return this.http.post<Cliente>(this.url, cliente);
+    return this.http.post<Cliente>(`${this.url}/cadastrar`, cliente);
   }
 }
 
