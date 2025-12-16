@@ -13,7 +13,7 @@
 
 <!-- <h1>{{cliente | json}}</h1> -->
 
-<table class="table">
+<table class="table" *ngIf="tabela">
   <thead class="table table-info">
     <tr>
       <th>#</th>
@@ -29,7 +29,7 @@
       <td>{{cliente.nome}}</td>
       <td>{{cliente.idade}}</td>
       <td>{{cliente.cidade}}</td>
-      <td><button class="btn btn-success">Selecionar</button>
+      <td><button class="btn btn-success" (click)="selecionarCliente(i)">Selecionar</button>
     </tr>
   </tbody>
 </table>
