@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Cliente } from '../modelo/Cliente';
 import { ClienteService } from '../servico/cliente.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-principal',
@@ -19,7 +20,7 @@ export class PrincipalComponent {
   clientes:Cliente[] = [];
 
   //Construtor
-  constructor(private servico:ClienteService){}
+  constructor(private servico:ClienteService, private toastr:ToastrService){}
 
   // Metodo/funcao de seleção
   selecionar():void{
@@ -31,7 +32,14 @@ export class PrincipalComponent {
   cadastrar():void{
     this.servico.cadastrar(this.cliente)
       .subscribe(retorno => {
+        // Cadastrar o cliente no vetor
         this.clientes.push(retorno);
+
+        // Limpar formulário
+        this.cliente = new Cliente();
+
+        // Mensagem
+        this.toastr.success('Cliente cadastrado com sucesso!', 'Sucesso');
       });
   }
 
