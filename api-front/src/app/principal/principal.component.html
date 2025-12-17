@@ -5,7 +5,7 @@
   <input type="number" placeholder="Idade" class="form-control" name="idade" [(ngModel)]="cliente.idade">
   <input type="text" placeholder="Cidade" class="form-control" name="cidade" [(ngModel)]="cliente.cidade">
   
-  <input type="button" value="Cadastrar" *ngIf="btnCadastro" class="btn btn-primary" (click)="cadastrar()">
+  <input type="button" value="Cadastrar" *ngIf="btnCadastro" class="btn btn-primary" (click)="cadastrar()" [disabled]="cliente.nome == '' || cliente.idade == 0 || cliente.cidade == ''">
   <input type="button" value="Alterar" *ngIf="!btnCadastro" class="btn btn-warning" (click)="editar()">
   <input type="button" value="Remover" *ngIf="!btnCadastro"class="btn btn-danger" (click)="remover()">
   <input type="button" value="Cancelar" *ngIf="!btnCadastro" class="btn btn-secondary" (click)="cancelar()">

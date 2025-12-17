@@ -33,6 +33,12 @@ export class PrincipalComponent {
 
   // Metodo/funcao de cadastro
   cadastrar():void{
+    // Verificar se os campos estao preenchidos
+    if(this.cliente.nome == '' || this.cliente.idade == 0 || this.cliente.cidade == ''){
+       this.toastr.error('Preencha todos os campos!', 'Erro');
+       return;
+    }
+
     this.servico.cadastrar(this.cliente)
       .subscribe({
         next: retorno => {
@@ -49,8 +55,6 @@ export class PrincipalComponent {
           // Mensagem de erro
           if(erro.status == 0){
              this.toastr.error('Serviço indisponível. Tente novamente mais tarde.', 'Erro');
-          }else{
-             this.toastr.error('Erro ao cadastrar cliente!', 'Erro');
           }
         }
       });
