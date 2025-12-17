@@ -63,6 +63,8 @@ export class PrincipalComponent {
   editar():void{
     this.servico.editar(this.cliente)
       .subscribe(retorno => {
+
+        // Obter a posicao do cliente no vetor
         let posicao = this.clientes.findIndex(obj => {
           return obj.codigo == retorno.codigo;
         });
@@ -83,7 +85,6 @@ export class PrincipalComponent {
         this.toastr.success('Cliente editado com sucesso!', 'Sucesso');
     });
   }
-
 
   // Metodo/funcao de inicializacao
   ngOnInit(){
