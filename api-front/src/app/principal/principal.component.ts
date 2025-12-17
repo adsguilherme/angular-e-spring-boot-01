@@ -34,15 +34,25 @@ export class PrincipalComponent {
   // Metodo/funcao de cadastro
   cadastrar():void{
     this.servico.cadastrar(this.cliente)
-      .subscribe(retorno => {
-        // Cadastrar o cliente no vetor
-        this.clientes.push(retorno);
+      .subscribe({
+        next: retorno => {
+          // Cadastrar o cliente no vetor
+          this.clientes.push(retorno);
 
-        // Limpar formulário
-        this.cliente = new Cliente();
+          // Limpar formulário
+          this.cliente = new Cliente();
 
-        // Mensagem
-        this.toastr.success('Cliente cadastrado com sucesso!', 'Sucesso');
+          // Mensagem
+          this.toastr.success('Cliente cadastrado com sucesso!', 'Sucesso');
+        },
+        error: erro => {
+          // Mensagem de erro
+          if(erro.status == 0){
+             this.toastr.error('Serviço indisponível. Tente novamente mais tarde.', 'Erro');
+          }else{
+             this.toastr.error('Erro ao cadastrar cliente!', 'Erro');
+          }
+        }
       });
   }
 
@@ -108,6 +118,13 @@ export class PrincipalComponent {
         // Mensagem
         this.toastr.success('Cliente removido com sucesso!', 'Sucesso');
     });
+  }
+
+  // Método para cancelar
+  cancelar():void{
+    this.cliente = new Cliente();
+    this.btnCadastro = true;
+    this.tabela = true;
   }
 
   // Metodo/funcao de inicializacao
